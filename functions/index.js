@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const express = require("express");
 const cors = require("cors");
-const stripe = require("stripe")('sk_test_51HdxsmE657guSCehgXDVjqFOgW8zdMGz4DddwQItQHhNS2hzPIziGAdytohwDfNp75CperWnQSfmvnLT1Ay34WLn008VZgplj7')
+const stripe = require("stripe")('Put in your Stripe Publishable Key here')
 
 // API
 
@@ -33,6 +33,3 @@ app.post('/payments/create', async (request, response) => {
 
 // - Listen command
 exports.api = functions.https.onRequest(app)
-
-// Example endpoint
-// http://localhost:5001/clone-11397/us-central1/api
