@@ -1,5 +1,6 @@
 export const initialState = {
     basket: [],
+    address: [],
     user: null
 };
 
@@ -47,6 +48,12 @@ const reducer = (state, action) => {
                 ...state,
                 basket: []
             };
+
+        case 'ADD_ADDRESS':
+            return {
+                ...state,
+                address: [...state.address, action.item],
+            };    
     
         default:
             return state;

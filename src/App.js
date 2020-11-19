@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'; // cloud function deployment : 8.14.33 
+import React, { useEffect } from 'react';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { db } from './firebase';
 import './Home.css';
 import Product from './Product';
 
 function Home() {
+
+    // 
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+         db.collection('products').onSnapshot(snapshot => {
+           setProducts(snapshot.docs.map(doc => ({
+             id: doc.id,
+             product: doc.data()
+            })));
+         })
+      }, []);
+
     return (
         <div className="home">
             <div className="home__container">
-                
                 <img 
                     className="home__image"
                     src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB28684220_.jpg" 
@@ -14,7 +27,12 @@ function Home() {
                 />
 
                 <div className="home__row">
-                    <Product 
+                    {
+                        products.slice(0, 2).map(({id, product}) => (
+                            <Product key={id} id={id} title={product.title} image={product.image} price={product.price} rating={product.rating}/>
+                        ))
+                    }
+                    {/* <Product 
                         id="12341234"
                         title="Zero to One: Notes on Start Ups, or How to Build the Future"
                         image="https://images-na.ssl-images-amazon.com/images/I/71uAI28kJuL.jpg"
@@ -27,11 +45,16 @@ function Home() {
                         image="https://images-na.ssl-images-amazon.com/images/I/71L2iBSyyOL._SL1500_.jpg"
                         price={179990.00}
                         rating={4}
-                    />
+                    /> */}
                 </div>
 
                 <div className="home__row">
-                    <Product
+                    {
+                        products.slice(2, 5).map(({id, product}) => (
+                            <Product key={id} id={id} title={product.title} image={product.image} price={product.price} rating={product.rating}/>
+                        ))
+                    }
+                    {/* <Product
                         id="34563456"
                         title="Apple iPhone 11 Pro Max (64GB) - Space Grey"
                         image="https://images-na.ssl-images-amazon.com/images/I/61tuQdl2yLL._SL1024_.jpg"
@@ -51,17 +74,22 @@ function Home() {
                         image="https://images-na.ssl-images-amazon.com/images/I/81uZx3TL29L._SL1500_.jpg"
                         price={130900.00}
                         rating={4} 
-                    />
+                    /> */}
                 </div>
 
                 <div className="home__row">
-                    <Product
+                    {
+                        products.slice(-1).map(({id, product}) => (
+                            <Product key={id} id={id} title={product.title} image={product.image} price={product.price} rating={product.rating}/>
+                        ))
+                    }
+                    {/* <Product
                         id="67896789"
                         title="Samsung 189 cm (75 inches) 7 Series 75NU7100 4K LED Smart TV (Black)"
                         image="https://images-na.ssl-images-amazon.com/images/I/91jzADbYVnL._SL1500_.jpg"
                         price={239990.00}
                         rating={4} 
-                    />
+                    /> */}
                 </div>
 
             </div>

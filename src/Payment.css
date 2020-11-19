@@ -49,3 +49,19 @@
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
 }
+
+.form__fix {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    width: 25%;
+    height: 25px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    padding: 2px;
+}
+
+.card__fix {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+}
