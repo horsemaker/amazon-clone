@@ -6,7 +6,7 @@ import { auth } from './firebase';
 function Login() {
     const history = useHistory();
     const [email, setEmail] = useState('');
-    const[password, setPassword] = useState('');
+    const [password, setPassword] = useState('');
 
     const signIn = e => {
         e.preventDefault();
@@ -20,21 +20,21 @@ function Login() {
             .catch(error => alert(error.message));
     }
 
-    const register = e => {
-        e.preventDefault();
+    // const register = e => {
+    //     e.preventDefault();
 
-        // do some fancy firebase register shitttttttt...
-        auth
-            .createUserWithEmailAndPassword(email, password)
-            .then((auth) => {
-                // it successfully created a new user with email and password
-                console.log(auth);
-                if (auth) {
-                    history.push('/');
-                }
-            })
-            .catch(error => alert(error.message));
-    }
+    //     // do some fancy firebase register shitttttttt...
+    //     auth
+    //         .createUserWithEmailAndPassword(email, password)
+    //         .then((auth) => {
+    //             // it successfully created a new user with email and password
+    //             console.log(auth);
+    //             if (auth) {
+    //                 history.push('/');
+    //             }
+    //         })
+    //         .catch(error => alert(error.message));
+    // }
 
     return (
         <div className="login">
@@ -73,11 +73,17 @@ function Login() {
                     By signing-in you agree to Amazon Fake Clone's Conditions of Use & Sale. Please see our Privacy Notice, our Cookies Notice and our Interest-Based Ads Notice.
                 </p>
 
-                <button 
-                    onClick={register}
-                    className="login__registerButton">
-                    Create your Amazon Account
-                </button>
+                <p>
+                    Don't have an existing account?
+                </p>
+
+                <Link to="/registration">
+                    <button 
+                        className="login__registerButton">
+                        Create your Amazon Account
+                    </button>
+                </Link>
+                
             </div>
         </div>
     )

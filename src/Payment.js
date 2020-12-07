@@ -8,6 +8,7 @@ import CurrencyFormat from 'react-currency-format';
 import { getBasketTotal } from './reducer';
 import axios from './axios';
 import { db } from './firebase';
+import firebase from "firebase";
 
 function Payment() {
 
@@ -92,7 +93,19 @@ function Payment() {
                     basket: basket,
                     address: address,
                     amount: paymentIntent.amount / 100,
-                    created: paymentIntent.created
+                    created: paymentIntent.created,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            
+            db
+                .collection('admin_orders')
+                .doc(paymentIntent.id)
+                .set({
+                    basket: basket,
+                    address: address,
+                    amount: paymentIntent.amount / 100,
+                    created: paymentIntent.created,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
             setSucceeded(true);
@@ -291,7 +304,7 @@ function Payment() {
                                     renderText = {(value) => (
                                         <>
                                             <h3>
-                                                Order Total : {value}
+                                                Order Total : {value} 
                                             </h3>
                                         </>
                                     )}

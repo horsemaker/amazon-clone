@@ -1,0 +1,7 @@
+.adminPanel {
+    padding: 20px 80px;
+}
+
+.adminPanel > h1 {
+    margin: 30px 0;
+}

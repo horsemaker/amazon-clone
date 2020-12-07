@@ -38,7 +38,7 @@ function Header() {
                 <Link to={!user && '/login'}>
                     <div onClick={handleAuthentication} className="header__option">
                         <span className="header__optionLineOne">
-                            Hello {!user? 'Guest' : user.email}
+                            Hello {!user? 'Guest' : user.displayName}
                         </span>
                         <span className="header__optionLineTwo">
                             {user ? 'Sign Out' : 'Sign In'}
@@ -46,16 +46,32 @@ function Header() {
                     </div>
                 </Link>
 
-                <Link to='/orders'>
-                    <div className="header__option">
-                        <span className="header__optionLineOne">
-                            Returns
-                        </span>
-                        <span className="header__optionLineTwo">
-                            & Orders
-                        </span>
-                    </div>
-                </Link>
+                {user?.email==="horsemaker@gmail.com" && (<Link to='/adminpanel'><div className="header__option"><span className="header__optionLineOne">Admin</span><span className="header__optionLineTwo">Panel</span></div></Link>)}
+
+                {user?
+                    <Link to='/orders'>
+                        <div className="header__option">
+                            <span className="header__optionLineOne">
+                                Returns
+                            </span>
+                            <span className="header__optionLineTwo">
+                                & Orders
+                            </span>
+                        </div>
+                    </Link>
+                    :
+                    <Link to='/login'>
+                        <div className="header__option">
+                            <span className="header__optionLineOne">
+                                Returns
+                            </span>
+                            <span className="header__optionLineTwo">
+                                & Orders
+                            </span>
+                        </div>
+                    </Link>
+                }
+                
                 
 
                 <div className="header__option">

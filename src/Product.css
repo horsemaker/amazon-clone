@@ -39,3 +39,74 @@
     height: 100px;
     margin-bottom: 15px;
 }
+
+.modal__productImage {
+    max-height: 200px;
+    width: 100%;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.modal__productRating {
+    display: flex;
+}
+
+.modal__productPrice {
+    margin-top: 5px;
+}
+
+.modal__productInfo {
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.modal__button {
+    background: #f0c14b;
+    border: 1px solid;
+    margin-top: 10px;
+    border-color: #a88734 #9c7e31 #846a29;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.product > Modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 10px;
+    padding: 20px;
+    width: 100%;
+}
+
+.product__reviewBox {
+    display: flex;
+    margin-top: 10px;
+}
+
+.product__reviews {
+    padding: 10px;
+    font-weight: normal;
+}
+.product__input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.post__button {
+    flex: 0;
+    border: none;
+    color: #6082a3;
+    background-color: transparent;
+    border-bottom: 1px solid lightgray;
+}
+
+.user__emailId {
+    margin-right: 10px;
+}
+
+/* display: flex;
+    flex-direction: column;
+    align-items: center; */
